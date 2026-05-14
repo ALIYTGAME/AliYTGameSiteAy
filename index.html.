@@ -6,13 +6,13 @@
   <title>AliYTGame.com | Official</title>
   <style>
     :root {
-      --primary-color: #ff8c00;
+      --primary-color: #ff8c00; /* Твой любимый оранжевый цвет мандаринов */
       --bg-color: #ffffff;
       --card-bg: #f5f5f5;
       --text-main: #1a1a1a;
       --header-bg: rgba(255, 255, 255, 0.95);
       --border-color: #dddddd;
-      --neon-shadow: 0 0 15px rgba(255, 140, 0, 0.7);
+      --neon-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -25,6 +25,10 @@
       }
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Roboto, sans-serif;
@@ -32,31 +36,34 @@
       color: var(--text-main);
       transition: 0.3s;
       text-align: center;
+      line-height: 1.6;
     }
 
     header {
       background: var(--header-bg);
-      padding: 10px 5%;
+      padding: 15px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 2px solid var(--primary-color);
+      border-bottom: 3px solid var(--primary-color);
+      backdrop-filter: blur(10px);
     }
 
     .logo-section {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       cursor: pointer;
+      user-select: none;
     }
 
     .avatar-placeholder {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
       background: var(--primary-color);
       color: white;
       display: flex;
@@ -65,11 +72,11 @@
       font-weight: bold;
       border: 2px solid #fff;
       box-shadow: var(--neon-shadow);
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .burger-menu {
-      font-size: 30px;
+      font-size: 32px;
       cursor: pointer;
       color: var(--primary-color);
     }
@@ -82,11 +89,11 @@
       height: 100%;
       background: var(--bg-color);
       z-index: 1000;
-      transition: 0.4s;
+      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 60px;
+      padding-top: 80px;
     }
 
     .menu-overlay.active {
@@ -96,8 +103,8 @@
     .close-btn {
       position: absolute;
       top: 20px;
-      right: 20px;
-      font-size: 40px;
+      right: 25px;
+      font-size: 45px;
       color: #ff5252;
       cursor: pointer;
     }
@@ -105,47 +112,52 @@
     .menu-links {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
     .menu-item {
       text-decoration: none;
       color: var(--text-main);
       font-weight: bold;
-      font-size: 18px;
+      font-size: 22px;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px 50px 20px;
     }
 
     .section {
       background: var(--card-bg);
-      padding: 30px;
-      border-radius: 25px;
-      margin-bottom: 25px;
+      padding: 35px 25px;
+      border-radius: 30px;
+      margin-bottom: 30px;
       border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .big-avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 30px;
+      width: 130px;
+      height: 130px;
+      border-radius: 35px;
       background: var(--primary-color);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 50px;
+      font-size: 55px;
       color: white;
       font-weight: bold;
       box-shadow: var(--neon-shadow);
-      margin-bottom: 20px;
+      margin: 0 auto 25px auto;
     }
 
     .history-list {
@@ -153,40 +165,64 @@
       padding: 0;
       text-align: left;
       display: inline-block;
+      width: 100%;
+      max-width: 500px;
     }
 
     .history-list li {
       margin-bottom: 15px;
-      padding-left: 15px;
-      border-left: 3px solid var(--primary-color);
+      padding: 15px;
+      border-left: 4px solid var(--primary-color);
+      background: rgba(255, 140, 0, 0.05);
+      border-radius: 0 15px 15px 0;
     }
 
     textarea {
       width: 100%;
-      max-width: 500px;
       box-sizing: border-box;
-      border-radius: 10px;
+      border-radius: 15px;
       background: var(--bg-color);
       color: var(--text-main);
-      border: 1px solid var(--primary-color);
-      padding: 12px;
+      border: 2px solid var(--border-color);
+      padding: 15px;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    textarea:focus {
+      border-color: var(--primary-color);
     }
 
     .btn-send {
-      margin-top: 15px;
-      padding: 12px 35px;
+      margin-top: 20px;
+      padding: 15px 45px;
       background: var(--primary-color);
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 15px;
       font-weight: bold;
+      font-size: 18px;
       cursor: pointer;
       box-shadow: var(--neon-shadow);
+      transition: 0.3s;
+    }
+
+    .btn-send:active {
+      transform: scale(0.95);
     }
 
     #admin-panel {
       display: none;
-      border: 2px dashed #ff5252;
+      border: 3px dashed #ff5252;
+      background: rgba(255, 82, 82, 0.05);
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 14px;
+      opacity: 0.6;
+      padding-bottom: 30px;
     }
   </style>
 </head>
@@ -195,7 +231,7 @@
   <header>
     <div class="logo-section" onclick="activateAdmin()">
       <div class="avatar-placeholder">AY</div>
-      <span style="font-weight:bold; color:var(--primary-color);">AliYTGame.com</span>
+      <span style="font-weight:bold; color:var(--primary-color); font-size: 20px;">AliYTGame</span>
     </div>
     <div class="burger-menu" onclick="toggleMenu()">☰</div>
   </header>
@@ -209,8 +245,7 @@
       <a href="#idea-form" class="menu-item" onclick="toggleMenu()">💡 ИДЕИ</a>
       <a href="https://www.youtube.com/@AliYTGAME005" class="menu-item" target="_blank">🔴 YOUTUBE</a>
       <a href="https://t.me/AliYTGame005" class="menu-item" target="_blank">✈️ TELEGRAM</a>
-      <a href="https://www.roblox.com" class="menu-item" target="_blank">🕹️ ROBLOX</a>
-      <a href="#admin-panel" class="menu-item" id="secret-tab" style="display: none; color: #ff5252;" onclick="toggleMenu()">🔒 АДМИН</a>
+      <a href="#admin-panel" class="menu-item" id="secret-tab" style="display: none; color: #ff5252;" onclick="toggleMenu()">🔒 АДМИН ПАНЕЛЬ</a>
     </div>
   </div>
 
@@ -218,40 +253,45 @@
     <section class="section" id="about">
       <div class="big-avatar">AY</div>
       <h1>Привет, я Али! 😎</h1>
-      <div style="max-width: 600px; line-height: 1.6;">
-        <p>Я <strong>AliYTGame</strong> — ютубер и разработчик.</p>
-        <p>Мне 11 лет, я учусь в 5 классе и являюсь <strong>отличником</strong>.</p>
-        <p>Для записи видео я использую профессиональный микрофон <strong>Jmary MC-PW9</strong>.</p>
-        <p>Помимо YouTube, я активно работаю над созданием <strong>собственной игры</strong>.</p>
-        <p>Мои любимые игры: <strong>Brawl Stars</strong> и <strong>Roblox</strong>.</p>
+      <div style="font-size: 18px;">
+        <p>Я <strong>AliYTGame</strong> — ютубер из Ташкента и начинающий разработчик.</p>
+        <p>Мне 11 лет, я учусь в 5 классе и я настоящий <strong>отличник</strong>.</p>
+        <p>Для записи видео я использую крутой микрофон <strong>Jmary MC-PW9</strong>.</p>
+        <p>Мои любимые игры: <strong>Brawl Stars</strong>, <strong>Roblox</strong>, <strong>Minecraft</strong> и <strong>FIFA</strong>.</p>
       </div>
     </section>
 
     <section class="section" id="my-game">
       <h2>🎮 Моя игра</h2>
-      <p>Я вкладываю много сил в разработку своего проекта. Следите за обновлениями на канале, чтобы не пропустить выход!</p>
+      <p>Я активно работаю над своей собственной игрой. Следите за новостями на моем канале, чтобы первым узнать о выходе!</p>
     </section>
 
     <section class="section" id="history">
-      <h2>📖 История моего пути</h2>
+      <h2>📖 Мой путь к мечте</h2>
       <ul class="history-list">
-        <li><strong>2024 год:</strong> Покупка микрофона Jmary и первые шаги.</li>
-        <li><strong>Лето 2025:</strong> Разработка планов для канала и новых проектов.</li>
-        <li><strong>Апрель 2026:</strong> Запуск официального сайта.</li>
-        <li><strong>Главная цель:</strong> Набрать <strong>100,000 подписчиков</strong>!</li>
+        <li><strong>2024 год:</strong> Начало пути и покупка микрофона Jmary.</li>
+        <li><strong>Лето 2025:</strong> Отдых на даче и крутые планы для канала.</li>
+        <li><strong>Апрель 2026:</strong> Запуск этого официального сайта.</li>
+        <li><strong>Цель:</strong> 100,000 подписчиков! 🚀</li>
       </ul>
     </section>
 
     <section class="section" id="idea-form">
       <h2>💡 Предложить идею</h2>
-      <textarea id="idea-input" rows="4" placeholder="Напиши идею для видео или моей игры..."></textarea>
-      <button class="btn-send" onclick="sendIdea()">ОТПРАВИТЬ</button>
+      <p>Твоя идея может попасть в следующее видео или в мою игру!</p>
+      <textarea id="idea-input" rows="4" placeholder="Напиши свою крутую идею здесь..."></textarea>
+      <button class="btn-send" onclick="sendIdea()">ОТПРАВИТЬ АЛИ</button>
     </section>
 
     <section class="section" id="admin-panel">
-      <h2 style="color:#ff5252;">🔒 Входящие идеи (Панель Али)</h2>
-      <div id="ideas-list">Идей пока нет...</div>
+      <h2 style="color:#ff5252;">🔒 Панель администратора</h2>
+      <div id="ideas-list" style="text-align: left;">Идей пока нет...</div>
+      <button class="btn-send" style="background:#444;" onclick="clearIdeas()">ОЧИСТИТЬ ВСЁ</button>
     </section>
+
+    <div class="footer">
+      © 2026 AliYTGame. Создано с душой.
+    </div>
   </div>
 
   <script>
@@ -261,11 +301,16 @@
 
     function sendIdea() {
       const input = document.getElementById('idea-input');
-      if (input.value.trim() === "") return alert("Напиши текст!");
+      if (input.value.trim() === "") return alert("Пожалуйста, напиши текст идеи!");
+      
       let ideas = JSON.parse(localStorage.getItem('ali_ideas') || '[]');
-      ideas.push(input.value);
+      ideas.push({
+        text: input.value,
+        date: new Date().toLocaleString()
+      });
       localStorage.setItem('ali_ideas', JSON.stringify(ideas));
-      alert("Идея сохранена!");
+      
+      alert("Круто! Идея сохранена в базе.");
       input.value = "";
       renderIdeas();
     }
@@ -273,22 +318,41 @@
     function renderIdeas() {
       const list = document.getElementById('ideas-list');
       let ideas = JSON.parse(localStorage.getItem('ali_ideas') || '[]');
-      if (ideas.length === 0) return;
-      list.innerHTML = ideas.map((id, index) => `<div style="padding:10px; border-bottom:1px solid #444; text-align:left;">${index + 1}. ${id}</div>`).join('');
+      if (ideas.length === 0) {
+        list.innerHTML = "Идей пока нет...";
+        return;
+      }
+      list.innerHTML = ideas.map((id, index) => 
+        `<div style="padding:15px; border-bottom:1px solid var(--border-color); margin-bottom:10px;">
+          <small style="color:var(--primary-color)">${id.date}</small><br>
+          <strong>${index + 1}.</strong> ${id.text}
+        </div>`
+      ).join('');
+    }
+
+    function clearIdeas() {
+      if(confirm("Али, ты уверен, что хочешь удалить все идеи?")) {
+        localStorage.removeItem('ali_ideas');
+        renderIdeas();
+      }
     }
 
     let taps = 0;
+    let tapTimer;
     function activateAdmin() {
       taps++;
+      clearTimeout(tapTimer);
+      tapTimer = setTimeout(() => { taps = 0; }, 2000);
+      
       if (taps === 5) {
-        let pass = prompt("Введите секретный пароль:");
+        let pass = prompt("Секретный код (Али, ты его знаешь!):");
         if (pass === "Ali100k") {
           document.getElementById('admin-panel').style.display = 'block';
           document.getElementById('secret-tab').style.display = 'block';
           renderIdeas();
-          alert('✅ Добро пожаловать, Али!');
+          alert('✅ Доступ разрешен. Привет, Босс!');
         } else {
-          alert('❌ Доступ запрещен!');
+          alert('❌ Неверный пароль!');
           taps = 0;
         }
       }
@@ -296,4 +360,3 @@
   </script>
 </body>
 </html>
-
